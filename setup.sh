@@ -28,7 +28,8 @@ run() {
   clone git@github.com:vim-airline/vim-airline-themes.git ~/.vim/pack/dist/start/vim-airline-themes
   clone git@github.com:tpope/vim-fugitive.git ~/.vim/pack/dist/start/vim-fugitive
   clone git@github.com:wakatime/vim-wakatime.git ~/.vim/pack/plugins/start/vim-wakatime
-
+  clone git@github.com:isobit/vim-caddyfile.git ~/.vim/pack/plugins/start/vim-caddyfile
+  
   createSymlink
 }
 
