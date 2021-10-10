@@ -8,7 +8,7 @@ clone() {
     return
   fi
 
-  git clone "$repo" "$directory"
+  git clone "$repo" "$directory" "${@:3}"
 }
 
 createSymlink() {
