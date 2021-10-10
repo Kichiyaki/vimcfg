@@ -1,10 +1,35 @@
 #!/bin/bash
 
-git clone git@github.com:fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
-git clone git@github.com:scrooloose/nerdtree.git ~/.vim/pack/dist/start/nerdtree
-git clone git@github.com:ryanoasis/vim-devicons.git ~/.vim/pack/plugins/start/vim-devicons
-git clone git@github.com:vim-airline/vim-airline.git ~/.vim/pack/dist/start/vim-airline
-git clone git@github.com:vim-airline/vim-airline-themes.git ~/.vim/pack/dist/start/vim-airline-themes
-git clone git@github.com:tpope/vim-fugitive.git ~/.vim/pack/dist/start/vim-fugitive
-git clone git@github.com:wakatime/vim-wakatime.git ~/.vim/pack/plugins/start/vim-wakatime
-cp .vimrc ~/.vimrc
+clone() {
+  repo=$1
+  directory=$2
+
+  if [ -d "$directory" ]; then
+    return
+  fi
+
+  git clone "$1" "$2"
+}
+
+createSymlink() {
+  if [ -e ~/.vimrc ]; then
+    echo "~/.vimrc exists, so symlink will not be created"
+    return
+  fi
+
+  ln -s "$PWD/.vimrc" ~/.vimrc
+}
+
+run() {
+  clone git@github.com:fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+  clone git@github.com:scrooloose/nerdtree.git ~/.vim/pack/dist/start/nerdtree
+  clone git@github.com:ryanoasis/vim-devicons.git ~/.vim/pack/plugins/start/vim-devicons
+  clone git@github.com:vim-airline/vim-airline.git ~/.vim/pack/dist/start/vim-airline
+  clone git@github.com:vim-airline/vim-airline-themes.git ~/.vim/pack/dist/start/vim-airline-themes
+  clone git@github.com:tpope/vim-fugitive.git ~/.vim/pack/dist/start/vim-fugitive
+  clone git@github.com:wakatime/vim-wakatime.git ~/.vim/pack/plugins/start/vim-wakatime
+
+  createSymlink
+}
+
+run

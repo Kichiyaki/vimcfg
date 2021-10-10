@@ -7,6 +7,11 @@ set backspace=indent,eol,start
 
 set number
 
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
